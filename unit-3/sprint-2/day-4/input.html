@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #data{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+    <input type="text" id="input">
+<input type="submit" value="Submit">
+</form>
+
+<div id="data"></div>
+</body>
+</html>
+
+<script>
+    // let api = `175b1beed44e25f3d54b14bf049a4edc`;
+    // let url = `api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}`
+    document.querySelector("form").addEventListener("submit",(eve)=>{
+        eve.preventDefault()
+getData()
+    });
+
+  async function getData() {
+        try{
+            let city = document.getElementById("input").value;
+let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ddc894a0a38425be12ca6bbf79cb31e5&units=metric`;
+// let url = `https://api.openweathermap.org/data/2.5/forecast/daily?q=kanpur&cnt=7&appid=ddc894a0a38425be12ca6bbf79cb31e5`
+let res = await fetch(url)
+let data = await res.json();
+
+console.log(data)
+// showWeather(data);
+        }
+         catch(err) {
+             console.log(err)
+         }
+
+    }
+
+
+function showWeather(weather) {
+     let dataDiv =document.getElementById("data");
+     dataDiv.innerHTML ="";
+    let temp = document.createElement("p");
+    temp.innerText =` temp- ${(weather.main.temp)}°`;
+    temp.style.color = "yellow"
+
+    let pressure = document.createElement("p");
+    pressure.innerText =` pressure- ${weather.main.pressure}`;
+    pressure.style.color = "gray";
+
+
+    let humidity = document.createElement("p");
+    humidity.innerText =` humidity- ${weather.main.humidity}`;
+    humidity.style.color = "green"
+
+    dataDiv.append(temp,pressure,humidity)
+}
+</script>

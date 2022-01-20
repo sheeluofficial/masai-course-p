@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    div {
+      width: 13%;
+    }
+    input,
+    button {
+      margin-top: 10px;
+    }
+
+    #showdata{
+      width: 30%;
+      margin: auto;
+    }
+    #tags{
+      width: 30%;
+      margin: auto;
+    }
+    #tags div{
+      display: flex;
+      flex-direction: row;
+      gap: 30%;
+    }
+    #showdata div{
+      display: flex;
+      flex-direction: rows;
+      gap: 30px;
+    }
+  </style>
+  <body>
+    <div>
+      <h1>Add Product</h1>
+      <input type="number" placeholder="id" id="id" />
+
+      <input type="name" placeholder="name" id="name" />
+
+      <input type="number" placeholder="price" id="price" />
+
+      <button onclick="addProduct()">Add Product</button>
+      <button onclick="updateProduct()"> Update Product</button>
+    </div>
+
+    <div>
+      <h1>Delete Product</h1>
+
+      <input type="text" id="delete_id" placeholder="Enter id to Delete" />
+
+      <button onclick="deleteProduct()">Delete Product</button>
+    </div>
+
+      <div id="tags">
+        <div>
+      <h3>id</h3>
+      <p>name</p>
+      <p>price</p>
+       </div>  
+       </div>
+      <div id="showdata">
+      
+      </div>
+
+   
+  </body>
+</html>
+
+
+
+<script>
+    let url = `http://127.0.0.1:5000/api/products`
+    
+  async  function addProduct(){
+  
+    let  data = {
+        id:document.getElementById("id").value,
+        name:document.getElementById("name").value,
+        price:document.getElementById("price").value
+    }
+
+    data = JSON.stringify(data)
+
+    let res = await fetch(url,{
+        method:"POST",
+        body:data,
+        headers:{
+            "Content-Type":"Application/json"
+        }
+    })
+
+    console.log(res)
+
+  }
+
+  async function updateProduct() {
+   
+    let idn = document.getElementById("id").value;
+    let  data = {
+      id:idn,
+      name:document.getElementById("name").value,
+      price:document.getElementById("price").value
+    }
+
+    data = JSON.stringify(data)
+
+    let res = await fetch(`http://127.0.0.1:5000/api/products/${+idn}`,{
+        method:"PUT",
+        body:data,
+        headers:{
+            "Content-Type":"Application/json"
+        }
+    })
+
+    console.log(res)
+    getData()
+  }
+
+
+async function deleteProduct(){
+
+    let id = document.getElementById("delete_id").value;
+
+    let res = await fetch(`http://127.0.0.1:5000/api/products/${id}`,{
+        method:"DELETE",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+
+}
+
+getData()
+
+async function getData() {
+  let res = await fetch(`http://127.0.0.1:5000/api/products`)
+  let data =await res.json()
+
+  console.log(data)
+  appendData(data)
+}
+
+
+function appendData(data) {
+let datadiv= document.getElementById("showdata")
+datadiv.innerHTML = null
+data.forEach(({id,name,price}) => {
+  let div = document.createElement("div")
+
+  let id_t = document.createElement("h3")
+  id_t.innerText = id;
+
+  let name_t  = document.createElement("p")
+  name_t.innerText = name;
+
+  let price_t = document.createElement("p")
+  price_t.innerText = price;
+
+  div.append(id_t,name_t,price_t)
+  datadiv.append(div)
+});
+}
+
+</script>

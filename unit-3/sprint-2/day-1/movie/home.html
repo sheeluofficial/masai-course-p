@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+   <style>
+       .carousel{
+           width: 98%;
+           height: 300px;
+           margin: auto;
+           margin-bottom: 30px;
+       }
+       .carousel img{
+           height: 100%;
+           width: 100%;
+       }
+
+       .movie-data{
+           display: grid;
+           grid-template-columns: repeat(3,1fr);
+
+           gap: 25px;
+       }
+   </style>
+</head>
+<body>
+    <div class="navbar">
+      
+    </div>
+    <div class="carousel">
+        <img src="" alt="" class="carouselimg">
+    </div>
+
+    <div class="movie-data"></div>
+</body>
+</html>
+<script type="module"> 
+  
+import {navbar} from "./script/navbar.js";
+
+document.querySelector(".navbar").innerHTML = navbar();  
+
+let movieTitle = ["heaven","avengers","Three Days of the Condor","Kill Bill","The Man Who Fell to Earth",
+                  "Whale Rider","Good Will Hunting","The Last Picture Show","Enter the Dragon","Psycho",
+                "Shawshank Redemption","The Longest Day","A Clockwork Orange" ]
+
+let movieData = JSON.parse(localStorage.getItem("movieData")) ?? [];
+
+let imgPoster = ["https://d2kektcjb0ajja.cloudfront.net/images/posts/feature_images/000/000/072/large-1466557422-feature.jpg?1466557422",
+                  "https://cdn.mos.cms.futurecdn.net/dDn555nWs2eoVSaSedwrHQ.jpg",
+                "https://i.pinimg.com/originals/be/d6/3e/bed63e4fa1a1be8cea48b3c630218778.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZW7BoVtF55NiQiSy3cXOVa1zV3Zn0DilxPQ&usqp=CAU"]
+
+            let imgInd = 0;
+
+let url = `http://www.omdbapi.com/?apikey=d2fda3cc&t=`;
+let key = `d2fda3cc`;
+// async function getData() {
+//     let res = await fetch(url)
+//     let data = await res.json()
+
+// console.log(data)
+//     // showData(data)
+// }
+saveData()
+ function saveData() {
+     if(movieData.length==0) {
+         for(let i=0; i<movieTitle.length; i++) {
+             let title = movieTitle[i].split(" ").join("+");
+
+             fetch(`${url}+${title}`).then((res)=> {
+                //  movieData.push()
+                let mData = res.json()
+                mData.then((mObj)=>{
+                   movieData.push(mObj);
+                   localStorage.setItem("movieData",JSON.stringify(movieData));
+                })
+             
+             })
+         }
+         
+      } 
+
+      showData(movieData)
+ }
+
+carousel()
+ function carousel() {
+     setInterval(() => {
+         let img  = document.querySelector(".carouselimg");
+         img.setAttribute("src",imgPoster[imgInd])
+         imgInd = (imgInd+1)%imgPoster.length;
+     }, 3000);
+ }
+
+ function showData(data) {
+     let mainDiv = document.querySelector(".movie-data");
+     mainDiv.innerHTML = "";
+
+     data.forEach(element => {
+         let movie_box = document.createElement("div");
+
+         let movieP = document.createElement("img");
+         movieP.src = element.Poster;
+
+         let Title = document.createElement("h3");
+         Title.innerText = element.Title;
+
+         let info_d_r = document.createElement("div");
+         let span_d = document.createElement("span");
+         span_d.innerText = element.Director;
+
+         let span_r = document.createElement("span");
+         span_r.innerText = element.Released;
+         info_d_r.append(span_d,span_r);
+
+         let genre = document.createElement("div");
+         genre.innerText = element.Genre;
+
+         movie_box.append(movieP,Title,info_d_r,genre)
+         mainDiv.append(movie_box)
+     });
+ }
+
+
+</script>

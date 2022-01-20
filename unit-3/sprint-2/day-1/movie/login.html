@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+          form{
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            margin: auto;
+            gap: 6px;
+            border: 1px solid rgb(206, 176, 173);
+            padding: 40px;
+        }
+        input{
+          padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar"></div>
+    
+    <form action="" >
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <input type="submit" value="Log In">
+    </form>
+</body>
+</html>
+<script type="module">
+    
+    import {navbar} from "./script/navbar.js";
+console.log(navbar)
+document.querySelector(".navbar").innerHTML = navbar();
+
+    document.querySelector("form").addEventListener("submit",function (event) {
+        event.preventDefault()
+        logIn()
+    })
+    let userData = JSON.parse(localStorage.getItem("userData"));
+    let loggedinflag = false;
+
+    function logIn() {
+      let email =   document.getElementById("email").value;
+      let pass = document.getElementById("password").value;
+
+      userData.forEach(element => {
+          if(element.email == email && element.password==pass) {
+              loggedinflag = true;
+              document.location.href = "home.html"
+          }
+      });
+      if(!loggedinflag) {
+          alert("Enter valid credentials")
+      }
+
+  }
+</script>
+

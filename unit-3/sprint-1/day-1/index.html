@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            font-family: monospace;
+        }
+        .container{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+background-color: rgb(29, 29, 29);
+height: 100vh;
+
+        }
+        .buttons{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+        .points{
+            flex: 3;
+            padding: 25px;
+            color: white;
+            background-color: turquoise;
+            font-size: 18px;
+            margin: 30px;
+            
+        }
+        @media all and (max-width:600px) 
+        {
+            .container{
+                flex-direction: column;
+            }
+            .buttons{
+                flex-direction: row;
+            }
+        }
+
+        button{
+            background-color: rgb(43, 42, 42);
+            width: 100px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* padding: 6px; */
+            color: white;
+
+
+        }
+        .button{
+            border: tomato 2px solid;
+            box-shadow: rgba(170, 13, 136, 0.35) 0px 5px 15px;
+            background-color: rgb(75, 74, 74);
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="buttons">
+            <button value="arr">Array</button>
+            <button value="obj">Object</button>
+            <button value="func">Function</button>
+            <button value="str">String</button>
+        </div>
+        <div class="points"></div>
+    </div>
+</body>
+</html>
+<script>
+
+let arr = ["Array is iterable","Order is maintained in array","To access value from arr we use interger value called index start with 0"]
+let obj = ["Object are not iterable","order is not guaranteed","We can add remove and access value in O(1) from obj"];
+let func = ["functions are block of code to be executed for a particular purpose","function declaration is hoisted"]
+let string = ["string is collection of characters written inside quote","string is iterable"]
+
+
+let allbtn = document.querySelectorAll("button");
+let pre = document.querySelector("button");
+allbtn.forEach((btn)=>{
+    btn.addEventListener("click",(event)=>{
+        pre.removeAttribute("class");
+        pre =event.target;
+event.target.setAttribute("class","button");
+switch(event.target.value){
+    case "arr" : showData(arr);
+    break;
+    case "obj": showData(obj);
+    break;
+    case "func" :showData(func);
+    break;
+    case "str": showData(string);
+    break;
+}
+    })
+})
+
+function  showData(data) {
+let div = document.querySelector(".points");
+div.innerHTML = "";
+let count =0;
+let ol = document.createElement("ol")
+data.forEach((line)=>{
+    let li = document.createElement("li");
+    li.innerText = line;
+    ol.append(li);
+})
+div.append(ol);
+
+
+}
+
+
+</script>

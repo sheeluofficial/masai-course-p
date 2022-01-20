@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* h1{
+
+        }
+
+        .class{
+
+        }
+        #id{
+
+        }
+
+        .class div {
+
+        } */
+    </style>
+</head>
+<body>
+    <div class="totalVaccine"></div>
+ name : <input type="text" id="name">
+ <button onclick="register()">Register</button>
+ 
+</body>
+</html>
+
+<script>
+// let myPromise = new Promise(function(resolve,reject){
+
+//     reject("HI i am reject")
+
+// }) 
+
+// myPromise.then(function (res) {
+//     console.log(res)
+// }).catch(function (res) {
+//     console.log(res)
+// })
+
+// let passexam = true;
+// let parentP = new Promise(function (resolve,reject) {
+//     if(passexam) {
+//         resolve("laptop ")
+//     } else{ 
+//         reject("chappal")
+//     }
+// })
+
+// parentP.then(function(res)  {
+//     console.log(res)
+// }).then (function(err) {
+//     console.log(res)
+// })
+
+let queue= ["pablo","babu bhaiya","shin chan","jethalal"]
+let totalVaccine = 3;
+
+let name;
+function register() {
+    
+   name  = document.getElementById("name").value;
+
+    queue.push(name);
+
+    let messagge = `thank you so much for registering ${name}`
+    alert(messagge)
+
+
+    
+let start  = new Promise(function (resolve,reject) {
+  
+    
+    setInterval(() => {
+       
+        if(queue[0]==name){
+            if(totalVaccine==0) {
+                reject("Vaccines are not availble")
+            } 
+                else {
+
+                    resolve("you are vaccinated")
+                }
+    } 
+    else if(queue.length==0) {
+        reject("you were not present on the spot")
+    }
+    if(totalVaccine==0) {
+                reject("Vaccines are not availble")
+            } 
+
+
+    
+    }, 3000);
+})
+start.then(function(res) {
+    alert(res)
+}).catch(function (err) {
+    alert(err)
+})
+
+}
+
+function startv() {
+    totalVaccine = totalVaccine -1;
+    if(totalVaccine==0) {
+        clearInterval(id)
+    }
+    queue.shift()
+    document.querySelector(".totalVaccine").innerText = queue.length;
+   
+    if(queue.length ==0) {
+clearInterval(id)
+    }
+console.log(queue)
+
+}
+
+let id = setInterval(startv, 3000);
+</script>

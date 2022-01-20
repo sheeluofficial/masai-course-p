@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            margin: auto;
+            gap: 6px;
+            border: 1px solid rgb(206, 176, 173);
+            padding: 40px;
+        }
+        input{
+          padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar"></div>
+    <form action="" >
+       Name: <input type="text" id="name" placeholder="name" required>
+       Mobile: <input type="tel" id="mobile" placeholder="Phone number" required>
+       Email: <input type="email" id="email" placeholder="Email" required>
+       Password: <input type="password" placeholder="Password" id="password" required>
+       <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+<script type="module">
+
+import {navbar} from "./script/navbar.js";
+console.log(navbar)
+document.querySelector(".navbar").innerHTML = navbar();
+
+
+    let userData = JSON.parse(localStorage.getItem("userData")) ?? [];
+document.querySelector("form").addEventListener("submit",getUserData);
+
+function getUserData() {
+    let data = {
+        name:document.getElementById("name").value,
+        mobile:document.getElementById("mobile").value,
+        email:document.getElementById("email").value,
+        password:document.getElementById("password").value,
+    }
+
+    userData.push(data)
+    localStorage.setItem("userData",JSON.stringify(userData));
+
+    document.location.href = "signup.html"
+}
+</script>

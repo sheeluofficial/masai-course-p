@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action=""> 
+        <input type="number" placeholder="card Number" id="cardnum">
+        <input type="number" placeholder="cvv" id="cvv">
+        <input type="date" id="edate">
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
+<script>
+document.querySelector("form").addEventListener("submit",(event)=>{
+event.preventDefault()
+let payment = {
+    num :document.getElementById("cardnum").value,
+     cvv:document.getElementById("cvv").value,
+     edate :document.getElementById("edate").value,
+}
+   
+setTimeout(()=>{
+    alert("successful")
+},3000)
+  
+})
+</script>

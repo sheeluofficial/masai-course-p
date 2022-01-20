@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .result{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 12px;
+        }
+        .video-box{
+            height: 290px;
+            background-color: rgb(243, 243, 243);
+            display: flex;
+            flex-direction: column;
+        }
+        .poster{
+            width: 100%;
+            height: 60%;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="video">
+    <button onclick="searchVideo()">Search</button>
+
+    <div class="result">
+
+    </div>
+
+</body>
+</html>
+
+<script>
+  let url =  'https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=tesla&type=video&key=AIzaSyANvfYt8sUcwefZ-QnHMzDRs6PXW0wGQpE' 
+let API = "AIzaSyANvfYt8sUcwefZ-QnHMzDRs6PXW0wGQpE"
+  
+  async function searchVideo() {
+          let search = document.getElementById("video").value;
+
+          let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${search}&type=video&key=AIzaSyCocwDczg-fpOLIKauV2XwP_OHJI9GQhKg
+&maxResults=20`)
+           let data = await res.json()
+
+           console.log(data)
+        showData(data.items)
+        }
+
+        function showData(data) {
+            let  result_div = document.querySelector(".result");
+            result_div.innerHTML = "";
+
+
+            data.forEach(element => {
+
+                let videoId = element.id.videoId;
+                let t = element.snippet.title;
+                let video_box = document.createElement("div");
+                     video_box.setAttribute("class","video-box");
+
+                     let poster = document.createElement("iframe");
+
+                     poster.setAttribute("class","poster");
+                     poster.src = `https://www.youtube.com/embed/${videoId}`
+
+                     let title = document.createElement("h4");
+                     title.innerText = t;
+
+                     video_box.append(poster,title);
+
+                     result_div.append(video_box)
+                
+            });
+
+
+        }
+
+</script>
+
+
+
+
+<!-- AIzaSyANvfYt8sUcwefZ-QnHMzDRs6PXW0wGQpE -->

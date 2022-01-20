@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="search-bar">
+    <button id="btn"></button>
+</body>
+</html>
+
+
+<script>
+    let clearSearchSuggest;
+    document.getElementById("search-bar").addEventListener("keypress",()=>{
+        let query = document.getElementById("search-bar").value;
+        if(query.length>=2) {
+    
+                   dBounce(searchSuggest)
+        }
+    })
+
+   function dBounce(searchSuggest) {
+       clearTimeout(clearSearchSuggest)
+
+       clearSearchSuggest = setTimeout(() => {
+           searchSuggest()
+       }, 3000);
+   }
+
+
+async function searchSuggest() {
+    try{
+        let movie = document.getElementById("search-bar").value;
+        let res = await fetch(`http://www.omdbapi.com/?apikey=d2fda3cc&s=${movie}`)
+
+        let data = await res.json()
+        console.log(data.Search)
+    } catch(err) {
+        console.log(err)
+    }
+     
+
+}
+
+
+</script>

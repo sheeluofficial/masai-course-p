@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <link rel="stylesheet" href="css/navbar.css">
+ <style>
+     #repo-list{
+   width: 80%;
+   margin: auto;
+   display: grid;
+   grid-template-columns: repeat(3,1fr);
+   gap: 40px;
+     }
+     #repo-list div{
+         background-color: gray;
+     }
+ </style>
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <div id="main">
+        <button id="rep-btn" >Get user repos</button>
+    </div>
+
+    <div id="repo-list"></div>
+
+</body>
+</html>
+
+<script type="module">
+       import {navbar} from "./components/navbar.js"
+       import getUser from "./script/getUser.js"
+       import {appendRepo}  from "./script/appendRepo.js"
+       let responce;
+document.getElementById("navbar").innerHTML = navbar()
+
+
+document.getElementById("search-input").addEventListener("keypress",searchUser)
+
+async function searchUser(event) {
+    if(event.key=="Enter") {
+
+        let query = document.getElementById("search-input").value;
+        console.log(query)
+
+   responce =await getUser(query)
+         let {avatar_url} = responce
+
+         document.getElementById("profile-img").src = avatar_url;
+
+    
+    }
+}
+
+document.getElementById("rep-btn").addEventListener("click",userRepos)
+
+async function userRepos() {
+        let res = await fetch(responce.repos_url)
+        let data = await res.json()
+appendRepo(data)
+        console.log(data)
+}
+
+
+
+
+
+
+</script>

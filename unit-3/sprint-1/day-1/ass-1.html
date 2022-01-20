@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    // creation and initialization of data obj
+    let data = {
+        name:sheelu,
+        age:21,
+    }
+    function mutuble() {
+        // copying data into data2 obj 
+        let data2 = data;
+        // changing name in data2 will affect data as well because 
+        // data and data2 both have the reference or pointing to same obj
+        data2.name = babu;
+        console.log(data2.name)
+    }
+
+    mutuble();
+</script>
