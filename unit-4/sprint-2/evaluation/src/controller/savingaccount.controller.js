@@ -5,8 +5,29 @@ let router = express.Router()
 
 const savingAccount = require("../models/savingaccount.model")
 const crudController = require("./crud.controller")
+const masterAccount = require("../models/masteraccount.model")
+router.post("", async (req,res)=>{
+    try{
+                 
+           
 
-router.post("",crudController(savingAccount).post)
+           const item = await savingAccount.create(req.body)
+
+           let balance = item.balance
+           let _id = item.masterAccount;
+
+           const accountm = await masterAccount.findById(_id)
+           accountm = JSON.parse(accountm)
+
+        balance =    accountm.balance + balance;
+
+           await masterAccount.findByIdAndUpdate(_id,{balance:balance})
+
+         return   res.status(201).send(item) 
+    }    catch(err) {
+        return res.status(500).send(err.message)
+    }
+    })
 
 
 module.exports = router

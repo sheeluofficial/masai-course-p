@@ -2,7 +2,7 @@ const express = require("express")
 const port     = 2345;
 const app = express()
 const connect = require("./configs/db")
-
+app.use(express.json())
 const userController =  require("./controller/user.controller")
 const branchController =  require("./controller/branchdetail.controller")
 const masterController =  require("./controller/masteraccount.controller")
