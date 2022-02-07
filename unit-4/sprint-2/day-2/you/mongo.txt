@@ -1,0 +1,22 @@
+show dbs
+use assignment
+db.createCollection("users")
+db.users.insert()
+db.users.find()
+db.users.insertMany([])
+db.users.find()
+db.users.insert()
+db.users.insert()
+db.users.find()
+db.users.insert()
+db.users.find()
+db.users.findOne()
+db.users.update({age:21},{$set:{age:20}})
+db.users.updateMany({age:{$ls:21}},{$set:{age:19}})
+db.users.remove({ "_id" : ObjectId("61f9348bead0af2b7cfff0e1")})
+WriteResult({ "nRemoved" : 1 })
+db.users.remove({ "_id" : ObjectId("61f9348bead0af2b7cfff0e1")})
+WriteResult({ "nRemoved" : 1 })
+db.users.deleteOne()
+db.users.delete()
+
