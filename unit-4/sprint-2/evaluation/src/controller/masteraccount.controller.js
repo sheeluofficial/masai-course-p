@@ -28,8 +28,8 @@ router.get("/:Id",async (req,res)=>{
 router.get("/getall/:Id",async (req,res)=>{
     
     try{
-    const saving = await savingAccount.find({ masterAccount:req.params.Id}).lean().exec()
-    const fixed = await fixedAccount.find({ masterAccount:req.params.Id}).lean().exec()
+    const saving = await savingAccount.find({ masterAccount:req.params.Id},{account_number:1,balance:1}).lean().exec()
+    const fixed = await fixedAccount.find({ masterAccount:req.params.Id},{account_number:1,balance:1}).lean().exec()
     
     const allaccount =[...saving,...fixed]
     

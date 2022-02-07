@@ -6,6 +6,7 @@ let router = express.Router()
 const fixedAccount = require("../models/fixedaccount.model")
 const crudController = require("./crud.controller")
 const masterAccount = require("../models/masteraccount.model")
+const savingAccount = require("../models/savingaccount.model")
 router.post("", async (req,res)=>{
     try{
                  
@@ -26,6 +27,9 @@ router.post("", async (req,res)=>{
         return res.status(500).send(err.message)
     }
     })
+    // router.post("/ismature/:Id",async (req,res)={
+
+    // })
 
 
 module.exports = router
