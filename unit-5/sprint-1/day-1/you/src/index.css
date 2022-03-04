@@ -1,0 +1,18 @@
+body{
+    margin: 0px;
+    padding:0%;
+}
+
+#nav{
+width: 100vw;
+height: 50px;
+background-color: aqua;
+
+}
+.nav-holder{
+    height: 100%;
+    width: 60vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
