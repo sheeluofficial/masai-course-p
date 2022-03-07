@@ -2,7 +2,7 @@
 import { useState } from "react";
 
  
-export function Counter({initial,addcls,remcls,totalcls,itemName,setTotal}) {
+export function Counter({initial,addcls,remcls,totalcls,itemName,settotal}) {
 
 let [item,setItem]  = useState(initial)
 
@@ -11,7 +11,7 @@ function handleChange(value) {
         if(pre===0&&value===-1) {
             return 0
         }
-        setTotal((pre)=>{
+        settotal((pre)=>{
             return pre+value
         })
         return pre + value
