@@ -14,7 +14,7 @@ function App() {
      <Counter initial={44} itemName={"Notebooks:"} addcls={"addNotebook"} remcls={"remNotebook"} totalcls={"totalNotebooks"} settotal={setTotal} />
      <Counter initial={78} itemName={"Inkpens:"} addcls={"addInkpen"} remcls={"remInkpen"} totalcls={"totalInkpens"} settotal={setTotal} />
 
-     <div>{total}</div>
+     <div className="total">{total}</div>
     </div>
   );
 }
