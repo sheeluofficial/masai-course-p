@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "task": "practice dsa",
+      "done": "not Yet",
+      "id": 1
+    },
+    {
+      "task": "do all react ass",
+      "done": "not Yet",
+      "id": 2
+    },
+    {
+      "task": "learn dp",
+      "done": "not Yet",
+      "id": 3
+    },
+    {
+      "task": "typescript",
+      "done": "not Yet",
+      "id": 4
+    }
+  ]
+}
