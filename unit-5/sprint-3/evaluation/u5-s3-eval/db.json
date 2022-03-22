@@ -1,0 +1,161 @@
+ {
+"books": [
+    {
+        "id": 1,
+        "title": "Reilly-Miller",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/517OihiR00L.jpg",
+        "description": "Osteoclasis-metacar/car",
+        "reviews": [
+            {},
+            {}
+        ],
+        "author": "Grenville",
+        "price": 44,
+        "section": "history",
+        "isbnNumber": 238582
+    },
+    {
+        "id": 2,
+        "title": "Koelpin-Cormier",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/517OihiR00L.jpg",
+        "description": "Eye enuc w implant NEC",
+        "reviews": [],
+        "author": "Sholom",
+        "price": 47,
+        "section": "history",
+        "isbnNumber": 342179
+    },
+    {
+        "id": 3,
+        "title": "Franecki, Nitzsche and Schuppe",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/517OihiR00L.jpg",
+        "description": "Cautery to stop epistax",
+        "reviews": [
+            {}
+        ],
+        "author": "Kimberlyn",
+        "price": 46,
+        "section": "history",
+        "isbnNumber": 845260
+    },
+    {
+        "id": 4,
+        "title": "Kuphal LLC",
+        "imageUrl": "https://d15fwz9jg1iq5f.cloudfront.net/wp-content/uploads/2018/01/06103321/Blog-YOERMysteries.jpg",
+        "description": "Bursectomy of hand",
+        "reviews": [
+            {},
+            {}
+        ],
+        "author": "Kevin",
+        "price": 71,
+        "section": "mystery",
+        "isbnNumber": 808270
+    },
+    {
+        "id": 5,
+        "title": "Halvorson, Mueller and Dooley",
+        "imageUrl": "https://d15fwz9jg1iq5f.cloudfront.net/wp-content/uploads/2018/01/06103321/Blog-YOERMysteries.jpg",
+        "description": "Reduc overcorrect ptosis",
+        "reviews": [],
+        "author": "Dalston",
+        "price": 27,
+        "section": "mystery",
+        "isbnNumber": 966821
+    },
+    {
+        "id": 6,
+        "title": "McCullough Group",
+        "imageUrl": "https://d15fwz9jg1iq5f.cloudfront.net/wp-content/uploads/2018/01/06103321/Blog-YOERMysteries.jpg",
+        "description": "Revise disc prost cerv",
+        "reviews": [
+            {},
+            {}
+        ],
+        "author": "Katrinka",
+        "price": 69,
+        "section": "mystery",
+        "isbnNumber": 469426
+    },
+    {
+        "id": 7,
+        "title": "Hand-Funk",
+        "imageUrl": "https://secure-ecsd.elsevier.com/covers/80/Tango2/large/9780128169582.jpg",
+        "description": "Opn tricus valvuloplasty",
+        "reviews": [
+            {}
+        ],
+        "author": "Min",
+        "price": 8,
+        "section": "technology",
+        "isbnNumber": 854768
+    },
+    {
+        "id": 8,
+        "title": "Feest-Jast",
+        "imageUrl": "https://secure-ecsd.elsevier.com/covers/80/Tango2/large/9780128169582.jpg",
+        "description": "Appl ext fix-metatar/tar",
+        "reviews": [
+            {}
+        ],
+        "author": "Juan",
+        "price": 58,
+        "section": "technology",
+        "isbnNumber": 266801
+    },
+    {
+        "id": 9,
+        "title": "Johnson-Parisian",
+        "imageUrl": "https://secure-ecsd.elsevier.com/covers/80/Tango2/large/9780128169582.jpg",
+        "description": "Joint biopsy NOS",
+        "reviews": [
+            {}
+        ],
+        "author": "Mordecai",
+        "price": 31,
+        "section": "technology",
+        "isbnNumber": 758401
+    },
+    {
+        "id": 10,
+        "title": "Hettinger Group",
+        "imageUrl": "https://m.media-amazon.com/images/I/51QW3m9u1eL.jpg",
+        "description": "Insert bone stimul NOS",
+        "reviews": [
+            {}
+        ],
+        "author": "Mathian",
+        "price": 22,
+        "section": "mythology",
+        "isbnNumber": 722565
+    },
+    {
+        "id": 11,
+        "title": "Denesik, Yundt and Reynolds",
+        "imageUrl": "https://m.media-amazon.com/images/I/51QW3m9u1eL.jpg",
+        "description": "Pelvimetry",
+        "reviews": [
+            {},
+            {}
+        ],
+        "author": "Jaquelyn",
+        "price": 72,
+        "section": "mythology",
+        "isbnNumber": 102338
+    },
+    {
+        "id": 12,
+        "title": "Schowalter, Bergnaum and Lebsack",
+        "imageUrl": "https://m.media-amazon.com/images/I/51QW3m9u1eL.jpg",
+        "description": "Lysis cortical adhesion",
+        "reviews": [
+            {}
+        ],
+        "author": "Taddeusz",
+        "price": 17,
+        "section": "mythology",
+        "isbnNumber": 666866
+    }
+]
+
+}
