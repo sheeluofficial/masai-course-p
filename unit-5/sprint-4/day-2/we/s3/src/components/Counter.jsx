@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-import {addCount} from "../Redux/action"
+import {addCount} from "../Redux/Counter/action"
 export  function Counter() {
 
-  const count = useSelector(store=>store.count)
+  const count = useSelector(store=>store.count.count)
   const dispatch = useDispatch()
 
   return (
